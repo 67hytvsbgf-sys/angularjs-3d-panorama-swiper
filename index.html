@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="panoramaApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>3D Panorama Swiper – AngularJS</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Fullscreen coverflow look */
+    .swiper-3d .swiper-slide-shadow-left,
+    .swiper-3d .swiper-slide-shadow-right {
+      background-image: linear-gradient(to left, rgba(0,0,0,0.5), rgba(0,0,0,0));
+    }
+
+    /* Optional: hide pagination if not wanted */
+    .swiper-pagination-bullet {
+      background: #fff;
+      opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #fff;
+    }
+
+    /* Loading indicator */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 1.2rem;
+      z-index: 10;
+    }
+
+    .no-images {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      z-index: 10;
+      padding: 20px;
+    }
+    .no-images code {
+      background: #333;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body ng-controller="MainController as vm">
+
+  <div class="loading" ng-if="vm.loading">Lade Bilder…</div>
+
+  <div class="no-images" ng-if="!vm.loading && vm.images.length === 0">
+    <h2>Keine Bilder gefunden</h2>
+    <p>Lege Bilder in den Ordner <code>images/</code> und aktualisiere die Liste in <code>app.js</code>.</p>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper" ng-if="vm.images.length > 0">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" ng-repeat="img in vm.images track by $index">
+        <img ng-src="{{img}}" alt="Slide {{$index + 1}}">
+      </div>
+    </div>
+    <!-- Optional Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
