@@ -204,10 +204,27 @@
       color: var(--gold);
       text-decoration: none;
       transition: color 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .footer-inner a:hover {
       color: #fff;
+    }
+
+    .footer-inner a:hover .email-icon {
+      stroke: #fff;
+    }
+
+    .email-icon {
+      width: 14px;
+      height: 14px;
+      stroke: var(--gold);
+      stroke-width: 1.5;
+      fill: none;
+      flex-shrink: 0;
+      transition: stroke 0.25s;
     }
 
     .footer-divider {
@@ -294,7 +311,13 @@
         Schön, dass du hier bist.<br>
         Bei Fragen oder einfach nur zum Hallo sagen –<br>
         ich freue mich über eine Nachricht an<br>
-        <a href="mailto:kontakt@example.com">kontakt@example.com</a>
+        <a href="mailto:kontakt@example.com">
+          <svg class="email-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 7l-10 7L2 7"/>
+          </svg>
+          kontakt@example.com
+        </a>
       </p>
     </div>
   </footer>
