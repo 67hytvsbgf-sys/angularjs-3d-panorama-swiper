@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer circle with elegant frame -->
+  <circle cx="32" cy="32" r="30" fill="url(#g)" stroke="#c9b896" stroke-width="2.5"/>
+  <!-- Inner subtle ring -->
+  <circle cx="32" cy="32" r="24" fill="none" stroke="rgba(201,184,150,0.25)" stroke-width="1"/>
+  <!-- Letters DS -->
+  <text x="32" y="38.5" text-anchor="middle" 
+        font-family="Georgia, 'Times New Roman', serif" 
+        font-size="20" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="#e8dcc8">DS</text>
+</svg>

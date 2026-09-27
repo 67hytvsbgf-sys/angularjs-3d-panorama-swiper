@@ -1,6 +1,6 @@
 /**
- * AngularJS 3D Panorama / Coverflow Swiper
- * Fullscreen – Bilder aus images/ – random – 5 Sekunden pro Bild
+ * DS – Moments by the Sea
+ * Elegant 3D Coverflow Gallery
  */
 (function () {
   'use strict';
@@ -8,94 +8,94 @@
   angular.module('panoramaApp', [])
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$timeout', '$scope'];
+  MainController.$inject = ['$timeout'];
 
-  function MainController($timeout, $scope) {
+  function MainController($timeout) {
     var vm = this;
-
     vm.loading = true;
     vm.images = [];
 
-    // ============================================================
-    // HIER BILDER EINTRAGEN (Dateinamen im Ordner images/)
-    // Du kannst beliebig viele hinzufügen.
-    // ============================================================
-    var imageFiles = [
-      'images/1.jpg',
-      'images/2.jpg',
-      'images/3.jpg',
-      'images/4.jpg',
-      'images/5.jpg'
-      // weitere Bilder hier ergänzen, z.B.:
-      // 'images/mein-bild.jpg',
+    // 6 hochwertige Strand-Platzhalter
+    // Côte d'Azur · Knokke · Katwijk
+    var imageList = [
+      {
+        url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=85',
+        alt: 'Côte d\'Azur – Türkises Mittelmeer'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1920&q=85',
+        alt: 'Côte d\'Azur – Felsenküste und Meer'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85',
+        alt: 'Côte d\'Azur – Abendlicht am Strand'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=1920&q=85',
+        alt: 'Knokke – Weite Strände an der Nordsee'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&q=85',
+        alt: 'Katwijk – Dünen und Nordsee'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1476673160081-cf234eef699b?w=1920&q=85',
+        alt: 'Nordsee – Stiller Strand bei Katwijk / Knokke'
+      }
     ];
 
-    // Shuffle (Fisher-Yates) – zufällige Reihenfolge
-    function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex;
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+    // Fisher-Yates Shuffle
+    function shuffle(arr) {
+      var a = arr.slice();
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i];
+        a[i] = a[j];
+        a[j] = t;
       }
-      return array;
+      return a;
     }
 
-    // Bilder laden / Liste setzen
-    function initImages() {
-      // Kopie erstellen und shuffeln
-      vm.images = shuffle(imageFiles.slice());
+    function init() {
+      vm.images = shuffle(imageList);
       vm.loading = false;
 
-      // Swiper erst nach Angular Digest initialisieren
       $timeout(function () {
-        initSwiper();
-      }, 50);
-    }
-
-    function initSwiper() {
-      // Falls bereits ein Swiper existiert, zerstören
-      if (window.mySwiper) {
-        window.mySwiper.destroy(true, true);
-      }
-
-      window.mySwiper = new Swiper('.swiper', {
-        effect: 'coverflow',           // 3D Coverflow = Panorama-ähnlicher Effekt
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        loopAdditionalSlides: 2,
-        coverflowEffect: {
-          rotate: 50,                  // Drehwinkel der seitlichen Slides
-          stretch: 0,
-          depth: 200,                  // Tiefe (3D)
-          modifier: 1,
-          slideShadows: true
-        },
-        autoplay: {
-          delay: 5000,                 // 5 Sekunden pro Bild
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false
-        },
-        speed: 1200,                   // Übergangsdauer
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        // Für echte Fullscreen-Nutzung
-        keyboard: {
-          enabled: true
-        },
-        mousewheel: {
-          forceToAxis: true
+        if (window.mySwiper) {
+          window.mySwiper.destroy(true, true);
         }
-      });
+
+        window.mySwiper = new Swiper('.swiper', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          loopAdditionalSlides: 3,
+          speed: 1400,
+          coverflowEffect: {
+            rotate: 28,          // eleganter, weniger extrem
+            stretch: 0,
+            depth: 160,
+            modifier: 1.1,
+            slideShadows: true
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          },
+          keyboard: { enabled: true },
+          mousewheel: { forceToAxis: true }
+        });
+      }, 80);
     }
 
-    // Start
-    initImages();
+    // Kurze elegante Ladezeit
+    $timeout(init, 600);
   }
 })();

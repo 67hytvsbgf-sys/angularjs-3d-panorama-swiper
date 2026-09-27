@@ -1,71 +1,44 @@
-# AngularJS 3D Panorama Swiper
+# DS – Moments by the Sea
 
-Fullscreen Swiper-Slider mit **3D Coverflow / Panorama-Effekt** auf Basis von **AngularJS 1.x** und **Swiper.js**.
+Elegante Fullscreen-Galerie mit 3D-Coverflow-Effekt.
 
-Bilder werden aus dem Ordner `images/` geladen, in **zufälliger Reihenfolge** angezeigt und wechseln alle **5 Sekunden** automatisch.
+**Titel:** DS  
+**Orte:** Côte d'Azur · Knokke · Katwijk  
 
 ## Features
 
-- Fullscreen 3D Coverflow-Effekt (Panorama-ähnlich)
-- Automatischer Wechsel alle 5 Sekunden
-- Zufällige Reihenfolge der Bilder (bei jedem Laden neu gemischt)
-- Touch / Maus / Tastatur steuerbar
-- Loop (Endlos)
-- Responsive
+- Fullscreen 3D Coverflow (eleganter, weicher Look)
+- 6 hochwertige Strand-Platzhalterbilder (zufällige Reihenfolge)
+- Autoplay alle 5 Sekunden
+- Modernes Impressum & Kontakt
+- SEO-optimiert (Meta, Open Graph, Twitter Cards)
+- SVG-Favicon mit Kreisrahmen und „DS“
+- Responsive & touch-fähig
 
-## Schnellstart
+## Live ansehen
 
-1. Repository klonen oder herunterladen
-2. Bilder in den Ordner `images/` legen (JPG, PNG, WebP …)
-3. In `app.js` die Dateinamen in das Array `imageFiles` eintragen
-4. `index.html` im Browser öffnen (oder über einen lokalen Server)
+Nach Aktivierung von GitHub Pages:
 
-### Bilder hinzufügen
+**https://67hytvsbgf-sys.github.io/angularjs-3d-panorama-swiper/**
+
+## Eigene Bilder ersetzen
+
+In `app.js` das Array `imageList` anpassen:
 
 ```js
-// in app.js
-var imageFiles = [
-  'images/1.jpg',
-  'images/2.jpg',
-  'images/mein-urlaub.jpg',
-  'images/panorama.png'
+var imageList = [
+  { url: 'images/dein-bild.jpg', alt: 'Beschreibung' },
   // ...
 ];
 ```
 
-## Ordnerstruktur
-
-```
-angularjs-3d-panorama-swiper/
-├── index.html          # Hauptseite
-├── app.js              # AngularJS Controller + Swiper-Konfiguration
-├── images/             # ← hier deine Bilder hochladen
-│   ├── 1.jpg
-│   ├── 2.jpg
-│   └── ...
-└── README.md
-```
-
-## Hinweise
-
-- Für lokale Tests mit `file://` können CORS-Probleme auftreten. Am besten einen einfachen lokalen Server nutzen:
-
-  ```bash
-  # Python 3
-  python -m http.server 8000
-
-  # oder npx
-  npx serve .
-  ```
-
-- Der Effekt `coverflow` erzeugt den klassischen 3D-Panorama-/Coverflow-Look. Du kannst in `app.js` die Parameter `rotate`, `depth` und `modifier` anpassen.
-
-- Autoplay-Intervall: `delay: 5000` (Millisekunden).
+Oder Bilder in den Ordner `images/` legen und die URLs entsprechend ändern.
 
 ## Technologien
 
-- AngularJS 1.8.3
-- Swiper.js 11 (Coverflow Effect + Autoplay)
-- Vanilla CSS (Fullscreen)
+- AngularJS 1.8
+- Swiper.js 11 (Coverflow)
+- Google Fonts (Cormorant Garamond + Inter)
+- SVG Favicon
 
-Viel Spaß!
+— DS
