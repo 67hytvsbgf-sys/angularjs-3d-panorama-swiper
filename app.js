@@ -39,7 +39,7 @@
         alt: 'Katwijk – Dünen und Nordsee'
       },
       {
-        url: 'https://images.unsplash.com/photo-1476673160081-cf234eef699b?w=1920&q=85',
+        url: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&q=85',
         alt: 'Nordsee – Stiller Strand bei Katwijk / Knokke'
       }
     ];
@@ -74,7 +74,7 @@
           loopAdditionalSlides: 3,
           speed: 1400,
           coverflowEffect: {
-            rotate: 28,          // eleganter, weniger extrem
+            rotate: 28,
             stretch: 0,
             depth: 160,
             modifier: 1.1,
