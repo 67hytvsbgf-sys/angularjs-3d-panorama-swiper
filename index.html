@@ -50,7 +50,7 @@
       background-image: linear-gradient(to left, rgba(0,0,0,0.5), rgba(0,0,0,0));
     }
 
-    /* Optional: hide pagination if not wanted */
+    /* Pagination */
     .swiper-pagination-bullet {
       background: #fff;
       opacity: 0.5;
@@ -86,6 +86,83 @@
       padding: 2px 6px;
       border-radius: 4px;
     }
+
+    /* ========== Footer: Impressum & Kontakt ========== */
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 16px 20px;
+      pointer-events: none;
+    }
+
+    .footer-inner {
+      pointer-events: auto;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 18px 28px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .footer-inner h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+
+    .footer-inner p {
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.78);
+      margin: 0;
+    }
+
+    .footer-inner a {
+      color: #a8d4ff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .footer-inner a:hover {
+      color: #fff;
+      border-bottom-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.25);
+      margin: 14px auto;
+    }
+
+    @media (max-width: 480px) {
+      .footer-inner {
+        padding: 14px 18px;
+      }
+      .footer-inner h2 {
+        font-size: 0.85rem;
+      }
+      .footer-inner p {
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body ng-controller="MainController as vm">
@@ -107,6 +184,27 @@
     <!-- Optional Pagination -->
     <div class="swiper-pagination"></div>
   </div>
+
+  <!-- Footer: Impressum & Kontakt (mittig unten) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <h2>Impressum</h2>
+      <p>
+        Private Webseite · Kein gewerbliches Angebot<br>
+        Angaben gemäß § 5 TMG entfallen, da es sich um ein rein privates Projekt handelt.
+      </p>
+
+      <div class="footer-divider"></div>
+
+      <h2>Kontakt</h2>
+      <p>
+        Schön, dass du hier bist!<br>
+        Bei Fragen, Feedback oder einfach nur zum Hallo sagen,<br>
+        melde dich gerne jederzeit unter<br>
+        <a href="mailto:kontakt@example.com">kontakt@example.com</a>
+      </p>
+    </div>
+  </footer>
 
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
