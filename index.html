@@ -1,1 +1,226 @@
-SEE_FILE
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DS – Moments by the Sea</title>
+  <meta name="description" content="DS – Eine elegante Galerie mit Momenten an der Côte d'Azur, in Knokke und Katwijk. Fullscreen 3D Panorama Experience.">
+  <meta name="keywords" content="DS, Galerie, Côte d'Azur, Knokke, Katwijk, Strand, Panorama, 3D, Fotografie">
+  <meta name="author" content="DS">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://67hytvsbgf-sys.github.io/angularjs-3d-panorama-swiper/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DS – Moments by the Sea">
+  <meta property="og:description" content="Elegante Fullscreen-Galerie mit 3D-Panorama-Effekt. Côte d'Azur · Knokke · Katwijk">
+  <meta property="og:url" content="https://67hytvsbgf-sys.github.io/angularjs-3d-panorama-swiper/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DS – Moments by the Sea">
+  <meta name="twitter:description" content="Elegante Fullscreen-Galerie mit 3D-Panorama-Effekt.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <style>
+    :root { --gold: #c9b896; --gold-light: #e8dcc8; --navy: #0c1a3a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #fff;
+    }
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 12px; pointer-events: none;
+    }
+    .logo-wrap {
+      height: 100px; width: auto;
+      filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55));
+    }
+    .logo-wrap svg { height: 100%; width: auto; display: block; }
+    .site-subtitle {
+      margin-top: 4px; font-size: 0.65rem; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 300;
+    }
+    .swiper { width: 100%; height: 100%; }
+    .swiper-slide {
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .swiper-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transform: scale(1.02); transition: transform 8s ease;
+    }
+    .swiper-slide-active img { transform: scale(1); }
+    .swiper-3d .swiper-slide-shadow-left,
+    .swiper-3d .swiper-slide-shadow-right {
+      background-image: linear-gradient(to left, rgba(0,0,0,0.45), transparent);
+    }
+    .swiper-pagination { bottom: 110px !important; }
+    .swiper-pagination-bullet {
+      width: 6px; height: 6px; background: rgba(255,255,255,0.35);
+      opacity: 1; transition: all 0.35s ease;
+    }
+    .swiper-pagination-bullet-active {
+      background: var(--gold); width: 22px; border-radius: 4px;
+    }
+    .loading {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #0a0a0a; z-index: 50;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 1.4rem; letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.7);
+    }
+    .site-footer {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 25;
+      display: flex; justify-content: center;
+      padding: 0 16px 22px; pointer-events: none;
+    }
+    .footer-inner {
+      pointer-events: auto;
+      background: rgba(10, 10, 10, 0.55);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px; padding: 16px 32px 18px;
+      max-width: 480px; width: 100%; text-align: center;
+    }
+    .footer-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 0.95rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 6px;
+    }
+    .footer-inner p {
+      font-size: 0.78rem; font-weight: 300; line-height: 1.55;
+      color: rgba(255, 255, 255, 0.65); margin: 0;
+    }
+    .footer-inner a {
+      color: var(--gold); text-decoration: none; transition: color 0.25s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .footer-inner a:hover { color: #fff; }
+    .footer-inner a:hover .email-icon { stroke: #fff; }
+    .email-icon {
+      width: 14px; height: 14px; stroke: var(--gold);
+      stroke-width: 1.5; fill: none; flex-shrink: 0; transition: stroke 0.25s;
+    }
+    .footer-divider {
+      width: 28px; height: 1px;
+      background: rgba(201, 184, 150, 0.35); margin: 12px auto;
+    }
+    @media (max-width: 600px) {
+      .logo-wrap { height: 76px; }
+      .site-header { padding-top: 10px; }
+      .site-subtitle { font-size: 0.58rem; }
+      .footer-inner { padding: 14px 20px 16px; }
+      .swiper-pagination { bottom: 100px !important; }
+    }
+  </style>
+</head>
+<body ng-app="panoramaApp" ng-controller="MainController as vm">
+
+  <header class="site-header">
+    <div class="logo-wrap" aria-label="DS">
+      <!-- Griffin crest with DS shield – SVG (always works, no external file) -->
+      <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0e1c3d"/>
+            <stop offset="100%" stop-color="#06102a"/>
+          </linearGradient>
+          <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8d5a3"/>
+            <stop offset="100%" stop-color="#b8963e"/>
+          </linearGradient>
+        </defs>
+        <!-- Top ornament -->
+        <path d="M100 8 C100 8 88 18 80 22 C70 12 55 18 60 30 C50 28 45 40 58 42 C55 55 75 50 80 42 C88 52 112 52 120 42 C125 50 145 55 142 42 C155 40 150 28 140 30 C145 18 130 12 120 22 C112 18 100 8 100 8Z" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.5"/>
+        <path d="M100 12 L100 28" stroke="url(#gold)" stroke-width="1.2"/>
+        <circle cx="100" cy="10" r="3" fill="url(#gold)"/>
+        <!-- Crown -->
+        <path d="M78 48 L82 62 L90 52 L100 64 L110 52 L118 62 L122 48 L100 54 Z" fill="url(#gold)" stroke="#8a7020" stroke-width="0.6"/>
+        <circle cx="82" cy="48" r="2.5" fill="url(#gold)"/>
+        <circle cx="100" cy="46" r="2.8" fill="url(#gold)"/>
+        <circle cx="118" cy="48" r="2.5" fill="url(#gold)"/>
+        <!-- Griffin body -->
+        <ellipse cx="95" cy="150" rx="32" ry="48" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.8"/>
+        <!-- Wing -->
+        <path d="M110 110 Q150 70 165 100 Q170 130 145 145 Q130 130 115 125 Z" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.6"/>
+        <path d="M120 115 Q145 90 155 110" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.6"/>
+        <path d="M118 125 Q140 105 150 125" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+        <!-- Neck & head -->
+        <path d="M78 120 Q65 95 70 75 Q78 60 95 68 Q100 85 92 110 Z" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.6"/>
+        <!-- Beak -->
+        <path d="M70 78 L52 82 L70 88 Z" fill="url(#gold)"/>
+        <!-- Eye -->
+        <circle cx="78" cy="74" r="3" fill="#e8dcc8"/>
+        <circle cx="79" cy="74" r="1.2" fill="#0a0a0a"/>
+        <!-- Raised claw -->
+        <path d="M70 130 Q50 120 45 105 Q40 115 48 125 Q42 130 50 138 Q58 132 70 135" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.4"/>
+        <path d="M45 105 L38 100 M45 105 L40 108 M45 105 L42 98" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Hind leg -->
+        <path d="M100 185 Q105 210 98 225" fill="none" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M98 225 L90 230 M98 225 L95 235 M98 225 L105 233" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Front standing leg -->
+        <path d="M85 185 Q80 210 78 228" fill="none" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M78 228 L70 232 M78 228 L75 238 M78 228 L85 235" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Tail -->
+        <path d="M110 175 Q140 185 145 160 Q150 175 135 190" fill="none" stroke="url(#gold)" stroke-width="1.8" stroke-linecap="round"/>
+        <!-- Shield with DS -->
+        <path d="M72 115 L128 115 L128 155 Q100 175 72 155 Z" fill="#06102a" stroke="url(#gold)" stroke-width="2.2"/>
+        <text x="100" y="148" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="600" fill="url(#gold)" letter-spacing="2">DS</text>
+        <!-- Bottom ornament -->
+        <path d="M60 250 Q100 235 140 250 Q120 260 100 270 Q80 260 60 250Z" fill="url(#navy)" stroke="url(#gold)" stroke-width="1.4"/>
+        <path d="M100 248 L100 268" stroke="url(#gold)" stroke-width="1.2"/>
+        <circle cx="100" cy="245" r="2.5" fill="url(#gold)"/>
+      </svg>
+    </div>
+    <div class="site-subtitle">Moments by the Sea</div>
+  </header>
+
+  <div class="loading" ng-if="vm.loading">DS</div>
+
+  <div class="swiper" ng-show="!vm.loading">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" ng-repeat="img in vm.images track by $index">
+        <img ng-src="{{img.url}}" alt="{{img.alt}}" loading="lazy">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <h2>Impressum</h2>
+      <p>
+        Private Webseite · Kein gewerbliches Angebot<br>
+        Angaben gemäß § 5 TMG entfallen, da es sich um ein rein privates Projekt handelt.
+      </p>
+      <div class="footer-divider"></div>
+      <h2>Kontakt</h2>
+      <p>
+        Schön, dass du hier bist.<br>
+        Bei Fragen oder einfach nur zum Hallo sagen –<br>
+        ich freue mich über eine Nachricht an<br>
+        <a href="mailto:kontakt@example.com">
+          <svg class="email-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 7l-10 7L2 7"/>
+          </svg>
+          kontakt@example.com
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
