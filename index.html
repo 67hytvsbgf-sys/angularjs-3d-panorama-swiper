@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>DS – Moments by the Sea</title>
-  <meta name="description" content="DS – Eine elegante Galerie mit Momenten an der Côte d'Azur, in Knokke und Katwijk. Fullscreen 3D Panorama Experience.">
+  <meta name="description" content="DS – Eine elegante Galerie mit Momenten an der Côte d'Azur, in Knokke und Katwijk.">
   <meta name="author" content="DS">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://67hytvsbgf-sys.github.io/angularjs-3d-panorama-swiper/">
-  <meta property="og:type" content="website">
   <meta property="og:title" content="DS – Moments by the Sea">
   <meta property="og:description" content="Elegante Fullscreen-Galerie mit 3D-Panorama-Effekt.">
   <meta property="og:url" content="https://67hytvsbgf-sys.github.io/angularjs-3d-panorama-swiper/">
@@ -19,6 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="lp0.js"></script>
+  <script src="lp1.js"></script>
   <style>
     :root { --gold: #c9b896; --gold-light: #e8dcc8; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,7 +52,7 @@
 <body ng-app="panoramaApp" ng-controller="MainController as vm">
   <header class="site-header">
     <div class="logo-wrap" aria-label="DS">
-      <img src="logo.png" alt="DS Greif Wappen" onerror="this.style.display='none'">
+      <img id="header-logo" alt="DS Greif Wappen" src="">
     </div>
     <div class="site-subtitle">Moments by the Sea</div>
   </header>
@@ -78,6 +79,14 @@
       </p>
     </div>
   </footer>
+  <script>
+    (function(){
+      if (window.DS_LOGO) {
+        var el = document.getElementById('header-logo');
+        if (el) el.src = window.DS_LOGO;
+      }
+    })();
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="app.js"></script>
