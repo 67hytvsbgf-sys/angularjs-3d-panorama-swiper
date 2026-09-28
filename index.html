@@ -14,7 +14,77 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAN1ElEQVR42qVZe3RU1bn/9j7PmTnzyjsk5EEISUggRhEIoiCiooIPuEp7QdGWVnq1XLtaLXepXSpd7V3XN7ZFUYTSCpRaRSzI">
+  <link id="favicon-link" rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #f5f5f5; }
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; align-items: center; padding: 18px 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent); pointer-events: none; }
+    .logo-wrap { pointer-events: auto; display: flex; align-items: center; gap: 12px; }
+    #header-logo { height: 80px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); opacity: 0; transition: opacity 0.4s ease; }
+    #header-logo.ready { opacity: 1; }
+    .swiper { width: 100%; height: 100%; }
+    .swiper-slide { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .swiper-pagination { bottom: 110px !important; }
+    .swiper-pagination-bullet { width: 6px; height: 6px; background: rgba(255,255,255,0.4); opacity: 1; }
+    .swiper-pagination-bullet-active { background: #e8d5b5; }
+    .site-footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; text-align: center; padding: 24px 20px 28px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none; }
+    .footer-inner { pointer-events: auto; max-width: 520px; margin: 0 auto; }
+    .footer-inner h2 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+    .footer-inner p { font-size: 0.9rem; line-height: 1.55; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+    .footer-inner a { color: #e8d5b5; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-inner a:hover { border-bottom-color: #e8d5b5; }
+    .email-icon { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    @media (max-width: 600px) { #header-logo { height: 56px; } .site-header { padding: 12px; } .site-footer { padding-bottom: 20px; } }
+  </style>
 </head>
-<body>TEMP</body>
+<body ng-app="panoramaApp" ng-controller="MainController as vm">
+  <header class="site-header">
+    <div class="logo-wrap" aria-label="DS">
+      <img id="header-logo" alt="DS Greif Wappen" src="">
+    </div>
+  </header>
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" ng-repeat="img in vm.images track by $index">
+        <img ng-src="{{img.url}}" alt="{{img.alt}}">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <h2>Impressum</h2>
+      <p>Private Website · Persönliche Strandmomente</p>
+      <p style="margin-top:14px;"><strong>Kontakt</strong></p>
+      <p>Schön, dass du vorbeigeschaut hast. Bei Fragen oder Anmerkungen schreib gerne eine kurze Nachricht.</p>
+      <p style="margin-top:8px;">
+        <a href="mailto:kontakt@example.com">
+          <svg class="email-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          kontakt@example.com
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="logo-data.js"></script>
+  <script>
+    (function() {
+      if (window.DS_LOGO) {
+        var img = document.getElementById('header-logo');
+        img.src = window.DS_LOGO;
+        img.onload = function() { img.classList.add('ready'); };
+      }
+      if (window.DS_FAVICON) {
+        document.getElementById('favicon-link').href = window.DS_FAVICON;
+      }
+    })();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
