@@ -23,8 +23,8 @@
   <meta name="twitter:description" content="Elegante Fullscreen-Galerie mit 3D-Panorama-Effekt.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200">
 
-  <link rel="icon" id="dyn-favicon" type="image/png" href="">
-  <link rel="apple-touch-icon" id="dyn-apple-icon" href="">
+  <link rel="icon" id="dyn-favicon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" id="dyn-apple-icon" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,13 +130,12 @@
       .swiper-pagination { bottom: 100px !important; }
     }
   </style>
-  <script src="logo-data.js"></script>
 </head>
 <body ng-app="panoramaApp" ng-controller="MainController as vm">
 
   <header class="site-header">
     <div class="logo-wrap" aria-label="DS">
-      <img id="header-logo" alt="DS – Greif Wappen" src="">
+      <img id="header-logo" alt="DS – Greif Wappen" src="logo.png">
     </div>
     <div class="site-subtitle">Moments by the Sea</div>
   </header>
@@ -176,20 +175,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      if (window.DS_LOGO) {
-        var img = document.getElementById('header-logo');
-        if (img) img.src = window.DS_LOGO;
-      }
-      if (window.DS_FAVICON) {
-        var f1 = document.getElementById('dyn-favicon');
-        var f2 = document.getElementById('dyn-apple-icon');
-        if (f1) f1.href = window.DS_FAVICON;
-        if (f2) f2.href = window.DS_FAVICON;
-      }
-    })();
-  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="app.js"></script>
