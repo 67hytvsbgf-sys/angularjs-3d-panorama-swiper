@@ -46,12 +46,12 @@
         alt: 'Amsterdam – Grachten und typische Häuser'
       },
       {
-        url: 'https://images.unsplash.com/photo-1558002179-7b0c7e0f2c0e?w=1920&q=85',
-        alt: 'Brielle – Historisches Städtchen in den Niederlanden'
+        url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=85',
+        alt: 'Brielle – Niederlande, typische Landschaft'
       },
       {
-        url: 'https://images.unsplash.com/photo-1559113202-c916b4e6cf8e?w=1920&q=85',
-        alt: 'Brüssel – Grand Place'
+        url: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=85',
+        alt: 'Brüssel – Stadtansicht Belgien'
       },
       {
         url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=85',
@@ -59,14 +59,14 @@
       },
       {
         url: 'https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=1920&q=85',
-        alt: 'Nizza – Promenade des Anglais an der Côte d\'Azur'
+        alt: 'Nizza – Promenade an der Côte d\'Azur'
       },
       {
-        url: 'https://images.unsplash.com/photo-1555881403-646f363e7a7a?w=1920&q=85',
-        alt: 'Tarragona – Mittelmeerküste in Spanien'
+        url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=85',
+        alt: 'Tarragona – Mittelmeerküste Spanien'
       },
       {
-        url: 'https://images.unsplash.com/photo-1513622475202-7f0d4b4b5b5a?w=1920&q=85',
+        url: 'https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1920&q=85',
         alt: 'Kopenhagen – Hafen und bunte Häuser'
       },
       {
@@ -74,16 +74,16 @@
         alt: 'Belek – Türkische Riviera, Strand und Meer'
       },
       {
-        url: 'https://images.unsplash.com/photo-1570077186671-e3a7e0c6b4c0?w=1920&q=85',
-        alt: 'Griechische Insel – Santorini, weißes Dorf am Meer'
+        url: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1920&q=85',
+        alt: 'Griechische Insel – Santorini am Meer'
       },
       {
-        url: 'https://images.unsplash.com/photo-1527004017725-7e5b7d0a9c0a?w=1920&q=85',
-        alt: 'Luzern – Kapellbrücke und See in der Schweiz'
+        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85',
+        alt: 'Luzern – See und Berge in der Schweiz'
       },
       {
-        url: 'https://images.unsplash.com/photo-1548585744-6b85f46e1f91?w=1920&q=85',
-        alt: 'Pisa – Schiefer Turm in Italien'
+        url: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1920&q=85',
+        alt: 'Pisa – Italien, historisches Stadtbild'
       }
     ];
 
@@ -138,7 +138,6 @@
       }, 80);
     }
 
-    // Kurze elegante Ladezeit
     $timeout(init, 600);
   }
 })();
