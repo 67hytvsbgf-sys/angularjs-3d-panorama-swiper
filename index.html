@@ -24,8 +24,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a0a; font-family: 'Inter', system-ui, sans-serif; color: #fff; }
     .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; padding-top: 12px; pointer-events: none; }
-    .logo-wrap { height: 88px; width: auto; filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55)); pointer-events: auto; }
-    .logo-wrap img { height: 100%; width: auto; display: block; object-fit: contain; opacity: 0; transition: opacity 0.45s ease; }
+    .logo-wrap { height: 88px; width: auto; filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55)); pointer-events: auto; border-radius: 18px; overflow: hidden; }
+    .logo-wrap img { height: 100%; width: auto; display: block; object-fit: contain; opacity: 0; transition: opacity 0.45s ease; border-radius: 18px; }
     .logo-wrap img.ready { opacity: 1; }
     .site-subtitle { margin-top: 4px; font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 300; }
     .swiper { width: 100%; height: 100%; }
@@ -59,7 +59,8 @@
     .email-icon { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 1.5; fill: none; flex-shrink: 0; transition: stroke 0.25s; }
     .footer-divider { width: 28px; height: 1px; background: rgba(201, 184, 150, 0.35); margin: 12px auto; }
     @media (max-width: 600px) {
-      .logo-wrap { height: 68px; }
+      .logo-wrap { height: 68px; border-radius: 14px; }
+      .logo-wrap img { border-radius: 14px; }
       .site-header { padding-top: 10px; }
       .site-subtitle { font-size: 0.58rem; }
       .footer-inner { padding: 14px 20px 16px; }
